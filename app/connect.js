@@ -31,23 +31,39 @@ Cell.prototype.playable = function(){
 };
 
 
+var Column = function(){
+  this.colCells = [];
+
+};
+
+Column.prototype.makeColumns = function(){
+  for (var j = 0; j < 6; j++){
+     this.colCells.push(new Cell());
+
+   }
+
+  }
+
+
 
 var Board = function(){
-this.boardCells = [];
-  }
-  
-Board.prototype.makeBoard = function(){
-    var numCells =  $(".cell").length;
-    for (var i = 0; i < numCells; i++){
-
-        this.boardCells.push(new Cell());
-      }
-
+this.boardColumns = [];
 
   }
 
+Board.prototype.makeBoard = function(c){
+
+     for (var i = 0; i < $(".col").length; i++){
+
+       this.boardColumns.push(c);
+    }
+
+
+  }
+  var c = new Column();
+  c.makeColumns();
   var b = new Board();
-  b.makeBoard();
+  b.makeBoard(c);
 
 var drop = function(){
 
