@@ -42,6 +42,7 @@ $( document ).ready(function(){
                     for (var t = 6; t > 0; t--){
                         if($("#c-" + t + "-" + j).hasClass('')){
                             $("#c-" + t + "-" + j).addClass(players[current]);
+                            togglePlayer();
                             count += 1;
 
                             //handling a tie

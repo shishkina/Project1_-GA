@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="stylesheet/style.css" />
         <title>Connect Four</title>
         <meta charset="utf-8" />
         <meta name="description" content="Connect four game">
     </head>
     <body>
+        <h1>Let's play Connect 4</h1>
         <span id="red">red</span>
         <span id="black">black</span>
+        <span id="n">Are you sure you want to start a new game?</span>
         <span id="win">The %s player won. Would you like to play one more time?</span>
 		<div>
-      <button id="new">New game</button>
+      <button id="new" class= "myButton">New game</button>
     </div>
         <div id="game">It's the <span id="c"></span>&nbsp;player's move.</div>
         <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
