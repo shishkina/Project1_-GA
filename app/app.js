@@ -1,6 +1,7 @@
 $( document ).ready(function(){
 
-    var start = function(){
+    var
+    start = function(){
     	    count = 0;
           gameOver = false;
           togglePlayer();
@@ -34,6 +35,16 @@ $( document ).ready(function(){
         //     players = [$("#red").html(),$("#black").html()]
 
     },
+    horizontalWin = function(i, j){
+      for (var left = j-1; left > 0; left--){
+        if(!sameColor(i, left))break;
+          for(var right = j+1; right < 8; right++){
+            if(!sameColor(i, right)) break;
+          }
+      }
+            return right - left > 4;
+
+    },
     // yet to add the winning logic
     // to handle horizontal/vertical/diagonal wins
     addCellBehavior = function(i,j){
@@ -42,9 +53,13 @@ $( document ).ready(function(){
                     for (var t = 6; t > 0; t--){
                         if($("#c-" + t + "-" + j).hasClass('')){
                             $("#c-" + t + "-" + j).addClass(players[current]);
-                            togglePlayer();
+                            if(horizontalWin(t, j)){
+                              gameOver = true;
+                                newGame(winMessage.replace("%s",players[current]));
+                            } else{
+                              togglePlayer();
+                            }
                             count += 1;
-
                             //handling a tie
                             if (count >= 42) {
                             	gameOver = true;
