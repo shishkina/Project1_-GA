@@ -27,33 +27,41 @@ $( document ).ready(function(){
             }
         }
     },
+    // function to check if the cell has the same class as current player
+    // to use in checkWin
     sameColor = function(i,j){
         return $("#c-" + i + "-" + j).hasClass(players[current]);;
     },
     togglePlayer = function(){
         $("#c").html(players[current = (current + 1) % 2]);
-        //     players = [$("#red").html(),$("#black").html()]
-
     },
     horizontalWin = function(i, j){
-      for (var left = j-1; left > 0; left--){
+      //check lefthand first
+      for (var left = j-1; left >= 1; left--){
         if(!sameColor(i, left))break;
-          for(var right = j+1; right < 8; right++){
+        //then righthand
+          for(var right = j+1; right <= 7; right++){
             if(!sameColor(i, right)) break;
           }
       }
             return right - left > 4;
 
     },
+    verticalWin = function(i, j){
+      for(var down  = i+1; down <= 6; down++){
+        if(!sameColor(down, j))break;
+      }
+        return down - i > 3;
+    },
     // yet to add the winning logic
     // to handle horizontal/vertical/diagonal wins
     addCellBehavior = function(i,j){
         $("#c-" + i + "-" + j).click(function(){
                 if(!gameOver){
-                    for (var t = 6; t > 0; t--){
+                    for (var t = 6; t >= 1; t--){
                         if($("#c-" + t + "-" + j).hasClass('')){
                             $("#c-" + t + "-" + j).addClass(players[current]);
-                            if(horizontalWin(t, j)){
+                            if(horizontalWin(t, j) || verticalWin(t, j)){
                               gameOver = true;
                                 newGame(winMessage.replace("%s",players[current]));
                             } else{
