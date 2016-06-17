@@ -1,7 +1,7 @@
 {
   "name": "connect_four",
   "version": "1.0.0",
-  "description": "In this modification to my Connect4 game, I decided to try a different approach. The game is fully controlled from the app.js file.",
+  "description": "In this iteration to my Connect4 game, I decided to try a different approach. The game is fully controlled from the app.js file.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shishkina/Project1_-GA/issues"
   },
-  "homepage": "https://github.com/shishkina/Project1_-GA#readme"
+  "homepage": "https://github.com/shishkina/Project1_-GA#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
